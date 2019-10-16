@@ -25,11 +25,29 @@ const reducer = (state, action) => {
     }
     break;
     
-    // case 'Toggle_Task':
-    //  return {
-    //    ...state,
+    case 'Toggle_Task':
+    const toggleItem = state.data.map(item => {
+      if(item.id === action.payload) {
+        return {
+          ...item,
+          completed: !item.completed
+        }
+      
+      } else {
+        return item;
+      }
+    })
+     return {
+       ...state,
+       data: toggleItem
+     }
+     break;
 
-    //  }
+     case 'Clear_Items':
+     return {
+       ...state,
+       data: state.data.filter(item => !item.completed)
+     }
     
     
     default:

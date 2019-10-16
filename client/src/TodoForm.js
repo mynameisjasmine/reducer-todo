@@ -3,13 +3,10 @@ import React, { useState, useReducer } from 'react';
 
 const TodoForm = props => {
 const [task, setTask] = useState('')
-//  console.log('state:', state, 'dispatch:', dispatch);
 
 
-//  const submitTask = event => {
-//      event.preventDefault();
-//      setTask({item: ''})
-//  }
+
+
  
  const changeHandler = event => {
     setTask(event.target.value);
@@ -21,6 +18,9 @@ const [task, setTask] = useState('')
   props.dispatch({type: 'Add_Task', payload: task})
   setTask('')
  }
+
+ 
+
     return (
       <form onSubmit={(event) => {
         addItem(event)
@@ -34,7 +34,7 @@ const [task, setTask] = useState('')
       
       />
       <button type="submit">Add Todo</button>
-      <button>Clear Completed</button>
+      <button onClick={props.clearItems}>Clear Completed</button>
 
     
       </form>
